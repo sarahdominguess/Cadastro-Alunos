@@ -25,3 +25,15 @@ def menu():
             opcao = int(opcao)
 
     return opcao
+
+# Função para inserir aluno
+def inserir(nome = [], rua = [], numero = [], bairro = [], cidade = [], uf = [], telefone = [], email = []):
+  print("\nÓtimo! Vamos inserir um aluno no sistema! Me informe:\n")
+  nome.append(input("NOME: "))
+  rua.append(input("RUA: "))
+  numero.append(input("NÚMERO: "))
+  bairro.append(("BAIRRO: "))
+  cidade.append(input("CIDADE: "))
+  uf.append(input("UF: "))
+  telefone.append(input("TELEFONE: "))
+  email.append(input("EMAIL: "))
