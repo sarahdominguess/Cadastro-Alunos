@@ -61,12 +61,19 @@ def inserir(df):
 def pesquisar(df):
   print("\nÓtimo! Vamos pesquisar um aluno no sistema!")
   aluno = input("NOME do aluno ou NÚMERO DA MATRÍCULA: ")
-  if aluno.isdigit():
-    aluno = int(aluno)
-    pesquisa = df.loc[df['matricula'] == aluno]
-  else:
+
+  if aluno.isdigit() == False:
     aluno = aluno.lower()
     pesquisa = df.loc[df['nome'] == aluno]
+    if len(pesquisa) > 1:
+      print("\nMais de um aluno com esse nome.")
+      while aluno.isdigit() == False:
+        aluno = input("Por favor, digite o NÚMERO DE MATRÍCULA do aluno desejado: ")
+      aluno = int(aluno)
+      pesquisa = df.loc[df['matricula'] == aluno]
+  else:
+    aluno = int(aluno)
+    pesquisa = df.loc[df['matricula'] == aluno]
 
   if pesquisa.empty == True:
     print("\nNão foi possível encontrar esse aluno!\n")
