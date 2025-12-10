@@ -11,8 +11,16 @@ opcao = fc.menu()
 # Se o usuário escolher inserir um aluno
 if opcao == 1:
     df = fc.inserir(df)
+
 elif opcao == 2:
     pesquisa = fc.pesquisar(df)
     opcao_pesquisa = fc.pesquisa_menu()
+
     if opcao_pesquisa == 1:
         df = fc.editar(df, pesquisa)
+    elif opcao_pesquisa == 2:
+        df = fc.remover(df, pesquisa)
+        print(df)
+
+elif opcao == 3:
+    print("\nPrograma finalizado!")
