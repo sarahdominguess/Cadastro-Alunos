@@ -5,32 +5,14 @@ import funcoes as fc
 # Carregando arquivo csv com função
 df = fc.carrega_csv("cadastro_alunos.csv")
 
-nomes = [None]
-rua = [None]
-numero = [None]
-bairro = [None]
-cidade = [None]
-uf = [None]
-telefone = [None]
-email = [None]
-matricula = [0]
-
-cadastros = {
-    'nome': nomes,
-    'rua': rua,
-    'numero': numero,
-    'bairro': bairro,
-    'cidade': cidade,
-    'uf': uf,
-    'telefone': telefone,
-    'email': email,
-    'matricula': matricula
-}
-
 # Recolhendo ação que usuario deseja realizar
 opcao = fc.menu()
 
 # Se o usuário escolher inserir um aluno
 if opcao == 1:
-    fc.inserir(nomes, rua, numero, bairro, cidade, uf, telefone, email, matricula)
-    fc.salvar_csv(df, cadastros, "cadastro_alunos.csv")
+    df = fc.inserir(df)
+elif opcao == 2:
+    pesquisa = fc.pesquisar(df)
+    opcao_pesquisa = fc.pesquisa_menu()
+    if opcao_pesquisa == 1:
+        df = fc.editar(df, pesquisa)
