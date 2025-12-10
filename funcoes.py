@@ -29,7 +29,7 @@ def menu():
 # Função para inserir aluno
 def inserir(nome = [], rua = [], numero = [], bairro = [], cidade = [], uf = [], telefone = [], email = [], matricula = []):
   print("\nÓtimo! Vamos inserir um aluno no sistema! Me informe:\n")
-  nome.append(input("NOME: "))
+  nome.append(input("NOME: ").lower())
   rua.append(input("RUA: "))
   numero.append(input("NÚMERO: "))
   bairro.append(input("BAIRRO: "))
@@ -47,3 +47,18 @@ def salvar_csv(df, dicionario, nome_arquivo):
   df_linha_dados = pd.DataFrame([dicionario])
   df = pd.concat([df, df_linha_dados], ignore_index=True)
   df.to_csv(nome_arquivo, index=False)
+
+def pesquisar(df):
+  print("\nÓtimo! Vamos pesquisar um aluno no sistema!")
+  aluno = input("NOME do aluno ou NÚMERO DA MATRÍCULA: ")
+  if aluno.isdigit():
+    aluno = int(aluno)
+    pesquisa = df.loc[df['matricula'] == aluno]
+  else:
+    aluno = aluno.lower()
+    pesquisa = df.loc[df['nome'] == aluno]
+
+  if pesquisa.empty == True:
+    print("\nNão foi possível encontrar esse aluno!\n")
+  else:
+    print(f"\nDados do aluno:\n\n{pesquisa}\n")
