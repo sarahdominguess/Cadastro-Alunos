@@ -37,9 +37,13 @@ def inserir(df):
   uf = input("UF: ")
   telefone = input("TELEFONE: ")
   email = input("EMAIL: ")
-  matricula = len(df) + 1
   
-  print(f"\nA matrícula desse aluno é: {matricula}")
+  if df['matricula'].empty == True:
+    matricula = 1
+  else:
+    matricula = df['matricula'].max() + 1
+  
+  print(f"\nA matrícula desse aluno é: {matricula}\n")
 
   cadastros = {
     'nome': nome,
