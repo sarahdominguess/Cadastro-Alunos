@@ -165,3 +165,6 @@ def remover(df, pesquisa):
     print("\nObrigada pela confirmação! Aluno NÃO removido!\n")
 
   return df
+
+def salvar(df, nome_arquivo):
+  df.to_csv(nome_arquivo, index=False)
