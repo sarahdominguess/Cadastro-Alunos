@@ -99,7 +99,7 @@ def pesquisa_menu():
       case 1:
         print("\nÓtimo! Vamos editar as informações desse aluno no sistema!\n")
       case 2:
-        print("\nÓtimo! Vamos remover um aluno do sistema!\n")
+        print("\nÓtimo! Vamos remover esse aluno do sistema!\n")
       case 3:
         print("\nÓtimo! Fim da pesquisa!\n")
   
@@ -149,5 +149,19 @@ def editar(df, pesquisa):
       df.loc[indice, 'email'] = edicao
     
   print(f"\nEdição realiza com sucesso! Novos dados:\n\n{df.loc[indice]}\n")
+
+  return df
+
+def remover(df, pesquisa):
+  print("Tem certeza que deseja REMOVER esse aluno?")
+  print("Para confirmar, digite 'SIM', com todas as letras maiúsculas. Respostas como 'Sim', 'sim' ou qualquer outras diferentes de 'SIM' serão desconsideradas.\n")
+  confirmacao = input("Digite 'SIM' para confirmar: ")
+
+  if confirmacao == "SIM":
+    indice = pesquisa.index
+    df = df.drop(indice)
+    print("\nAluno removido!\n")
+  else:
+    print("\nObrigada pela confirmação! Aluno NÃO removido!\n")
 
   return df
