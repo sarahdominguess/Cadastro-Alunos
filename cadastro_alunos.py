@@ -5,15 +5,15 @@ import funcoes as fc
 # Carregando arquivo csv com função
 df = fc.carrega_csv("cadastro_alunos.csv")
 
-nomes = []
-rua = []
-numero = []
-bairro = []
-cidade = []
-uf = []
-telefone = []
-email = []
-matricula = []
+nomes = [None]
+rua = [None]
+numero = [None]
+bairro = [None]
+cidade = [None]
+uf = [None]
+telefone = [None]
+email = [None]
+matricula = [0]
 
 cadastros = {
     'nome': nomes,
@@ -32,4 +32,5 @@ opcao = fc.menu()
 
 # Se o usuário escolher inserir um aluno
 if opcao == 1:
-    fc.inserir(nomes, rua, numero, bairro, cidade, uf, telefone, email)
+    fc.inserir(nomes, rua, numero, bairro, cidade, uf, telefone, email, matricula)
+    fc.salvar_csv(df, cadastros, "cadastro_alunos.csv")
