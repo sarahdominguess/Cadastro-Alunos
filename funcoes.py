@@ -27,26 +27,36 @@ def menu():
   return opcao
 
 # Função para inserir aluno
-def inserir(nome = [], rua = [], numero = [], bairro = [], cidade = [], uf = [], telefone = [], email = [], matricula = []):
+def inserir(df):
   print("\nÓtimo! Vamos inserir um aluno no sistema! Me informe:\n")
-  nome.append(input("NOME: ").lower())
-  rua.append(input("RUA: "))
-  numero.append(input("NÚMERO: "))
-  bairro.append(input("BAIRRO: "))
-  cidade.append(input("CIDADE: "))
-  uf.append(input("UF: "))
-  telefone.append(input("TELEFONE: "))
-  email.append(input("EMAIL: "))
-  matricula.append(matricula[-1] + 1)
-  print(f"\nA matrícula desse aluno é: {matricula[-1]}")
-
-  if matricula[0] == 0:
-    matricula.remove(0)
+  nome = input("NOME: ").lower()
+  rua = input("RUA: ")
+  numero = input("NÚMERO: ")
+  bairro = input("BAIRRO: ")
+  cidade = input("CIDADE: ")
+  uf = input("UF: ")
+  telefone = input("TELEFONE: ")
+  email = input("EMAIL: ")
+  matricula = len(df) + 1
   
-def salvar_csv(df, dicionario, nome_arquivo):
-  df_linha_dados = pd.DataFrame([dicionario])
+  print(f"\nA matrícula desse aluno é: {matricula}")
+
+  cadastros = {
+    'nome': nome,
+    'rua': rua,
+    'numero': numero,
+    'bairro': bairro,
+    'cidade': cidade,
+    'uf': uf,
+    'telefone': telefone,
+    'email': email,
+    'matricula': matricula
+  }
+
+  df_linha_dados = pd.DataFrame([cadastros])
   df = pd.concat([df, df_linha_dados], ignore_index=True)
-  df.to_csv(nome_arquivo, index=False)
+
+  return df
 
 def pesquisar(df):
   print("\nÓtimo! Vamos pesquisar um aluno no sistema!")
