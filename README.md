@@ -5,7 +5,7 @@ Esse projeto é um código em python realizado por Sarah Domingues para a matér
 
 * Como esse código utiliza pandas, é necessário instalar esse pacote. Para isso, no terminal do seu computador, digite pip install pandas
 
-  ## Exemplos de Funcionalidades:
+## Exemplos de Funcionalidades:
 
   * INSERIR aluno
   * REMOVER aluno
