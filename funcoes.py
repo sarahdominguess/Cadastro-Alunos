@@ -13,27 +13,37 @@ def carrega_csv(caminho_arquivo):
 
 # Função para mostrar o menu e escolher a ação
 def menu():
-    print("Qual das opções abaixo deseja realizar?\n  1- INSERIR aluno\n  2- PESQUISAR aluno\n  3- SAIR")
+  print("Qual das opções abaixo deseja realizar?\n  1- INSERIR aluno\n  2- PESQUISAR aluno\n  3- SAIR")
+  opcao = input("\nDigite o número da opção que deseja realizar: ")
+  if opcao.isdigit():
+    opcao = int(opcao)
+    
+  while isinstance(opcao, str) or opcao < 1 or opcao > 3:
+    print("\nVocê deve digitar o NÚMERO da ação desejada, sendo 1, 2 ou 3.\n  1- INSERIR aluno\n  2- PESQUISAR aluno\n  3- SAIR")
     opcao = input("\nDigite o número da opção que deseja realizar: ")
     if opcao.isdigit():
-        opcao = int(opcao)
-    
-    while isinstance(opcao, str) or opcao < 1 or opcao > 3:
-        print("\nVocê deve digitar o NÚMERO da ação desejada, sendo 1, 2 ou 3.\n  1- INSERIR aluno\n  2- PESQUISAR aluno\n  3- SAIR")
-        opcao = input("\nDigite o número da opção que deseja realizar: ")
-        if opcao.isdigit():
-            opcao = int(opcao)
+      opcao = int(opcao)
 
-    return opcao
+  return opcao
 
 # Função para inserir aluno
-def inserir(nome = [], rua = [], numero = [], bairro = [], cidade = [], uf = [], telefone = [], email = []):
+def inserir(nome = [], rua = [], numero = [], bairro = [], cidade = [], uf = [], telefone = [], email = [], matricula = []):
   print("\nÓtimo! Vamos inserir um aluno no sistema! Me informe:\n")
   nome.append(input("NOME: "))
   rua.append(input("RUA: "))
   numero.append(input("NÚMERO: "))
-  bairro.append(("BAIRRO: "))
+  bairro.append(input("BAIRRO: "))
   cidade.append(input("CIDADE: "))
   uf.append(input("UF: "))
   telefone.append(input("TELEFONE: "))
   email.append(input("EMAIL: "))
+  matricula.append(matricula[-1] + 1)
+  print(f"\nA matrícula desse aluno é: {matricula[-1]}")
+
+  if matricula[0] == 0:
+    matricula.remove(0)
+  
+def salvar_csv(df, dicionario, nome_arquivo):
+  df_linha_dados = pd.DataFrame([dicionario])
+  df = pd.concat([df, df_linha_dados], ignore_index=True)
+  df.to_csv(nome_arquivo, index=False)
